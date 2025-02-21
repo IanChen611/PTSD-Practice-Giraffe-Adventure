@@ -19,6 +19,10 @@ void App::Update() {
         m_Giraffe->SetPosition({m_Giraffe->GetPosition().x + 5.0f, m_Giraffe->GetPosition().y});
     }
 
+    if (m_Giraffe->IfCollides(m_Chest)){
+        m_Chest->SetVisible(false);
+    }
+
     /*
      *  Do not touch the code below as they serve the purpose for validating the tasks,
      *  rendering the frame, and exiting the game.

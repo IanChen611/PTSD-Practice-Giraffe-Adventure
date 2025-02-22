@@ -23,6 +23,11 @@ void App::Update() {
         m_Chest->SetVisible(false);
     }
 
+    for(int i = 0;i < 3;i++){
+        if(m_Giraffe->IfCollides(m_Doors[i]) && m_Doors[i]->GetVisibility()){
+            m_Doors[i]->SetImage(GA_RESOURCE_DIR"/Image/Character/door_open.png");            
+        }
+    }
     /*
      *  Do not touch the code below as they serve the purpose for validating the tasks,
      *  rendering the frame, and exiting the game.

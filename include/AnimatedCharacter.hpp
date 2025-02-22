@@ -28,6 +28,11 @@ public:
 
     [[nodiscard]] bool IfAnimationEnds() const;
 
+    void Play(){
+        auto temp = std::dynamic_pointer_cast<Util::Animation>(m_Drawable);
+        temp->Play();
+    }
+
 };
 
 #endif //ANIMATED_CHARACTER_HPP

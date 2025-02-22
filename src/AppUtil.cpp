@@ -45,7 +45,8 @@ void App::ValidTask() {
                     m_Phase = Phase::BEE_ANIMATION;
                     m_Giraffe->SetVisible(false);
                     m_Bee->SetVisible(true);
-
+                    m_Bee->SetLooping(true);
+                    m_Bee->Play();
                     m_PRM->NextPhase();
                 }
             } else {
@@ -54,8 +55,10 @@ void App::ValidTask() {
             break;
 
         case Phase::BEE_ANIMATION:
+            // m_Bee->SetLooping(false);
             isBeeLooping = m_Bee->IsLooping();
             isBeePlaying = m_Bee->IsPlaying();
+            
 
             if (isBeeLooping && isBeePlaying) {
                 m_Phase = Phase::OPEN_THE_DOORS;
@@ -76,6 +79,8 @@ void App::ValidTask() {
                 m_Phase = Phase::COUNTDOWN;
                 std::for_each(m_Doors.begin(), m_Doors.end(), [](const auto& door) { door->SetVisible(false); });
                 m_Giraffe->SetVisible(false);
+                m_Ball->SetVisible(true);
+                m_Ball->Play();
 
                 m_PRM->NextPhase();
             } else {

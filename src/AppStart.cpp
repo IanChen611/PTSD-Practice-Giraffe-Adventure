@@ -36,7 +36,19 @@ void App::Start() {
         m_Root.AddChild(m_Doors[i]);
     }
 
-    // TODO: The counting down ball for phase 6
+    // TODO: The counting down ball for phase 6.
+    std::vector<std::string> ballImages;
+    ballImages.reserve(4);
+    for (int i = 0; i < 4; ++i) {
+        if(i == 3) ballImages.emplace_back(GA_RESOURCE_DIR"/Image/Character/ball-ok.png");
+        else ballImages.emplace_back(GA_RESOURCE_DIR"/Image/Character/ball-" + std::to_string(i + 1) + ".png");
+    }
+
+    m_Ball = std::make_shared<AnimatedCharacter>(ballImages);
+    m_Ball->SetZIndex(5);
+    m_Ball->SetVisible(false);
+    m_Root.AddChild(m_Ball);
+
 
     m_PRM = std::make_shared<PhaseResourceManger>();
     m_Root.AddChildren(m_PRM->GetChildren());
